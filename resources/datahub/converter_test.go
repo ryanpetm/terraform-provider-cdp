@@ -12,6 +12,7 @@ package datahub
 
 import (
 	"context"
+	"fmt"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
@@ -98,11 +99,11 @@ func TestFromModelToRequestRecipe(t *testing.T) {
 
 func TestFromModelToRequestSubnetId(t *testing.T) {
 	subnetIds := []types.String{types.StringValue("subnet1"), types.StringValue("subnet2")}
-	igs := []InstanceGroup{{Recipes: subnetIds}}
+	igs := []InstanceGroup{{SubnetIds: subnetIds}}
 	input := awsDatahubResourceModel{InstanceGroup: igs}
 
 	got := fromModelToAwsRequest(input, context.TODO())
-
+	fmt.Printf("Go Syntax Dump:\n%#v\n", got.InstanceGroups[0].SubnetIds)
 	test.CompareInts(len(got.InstanceGroups), len(input.InstanceGroup), t)
 	test.CompareInts(len(got.InstanceGroups[0].SubnetIds), len(input.InstanceGroup[0].SubnetIds), t)
 
