@@ -37,6 +37,7 @@ import (
 	"github.com/cloudera/terraform-provider-cdp/resources/iam"
 	"github.com/cloudera/terraform-provider-cdp/resources/opdb"
 	"github.com/cloudera/terraform-provider-cdp/resources/recipe"
+	"github.com/cloudera/terraform-provider-cdp/resources/cloudprivatelinks"
 )
 
 // Ensure the implementation satisfies the expected interfaces.
@@ -254,6 +255,8 @@ func (p *CdpProvider) Resources(_ context.Context) []func() resource.Resource {
 		dwaws.NewDwClusterResource,
 		dwdatabasecatalog.NewDwDatabaseCatalogResource,
 		recipe.NewRecipeResource,
+		cloudprivatelinks.NewPrivateLinkEndpointResource,
+        cloudprivatelinks.NewPrivateLinkServiceAccessResource,
 	}
 }
 

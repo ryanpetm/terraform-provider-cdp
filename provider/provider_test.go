@@ -37,6 +37,7 @@ import (
 	"github.com/cloudera/terraform-provider-cdp/resources/iam"
 	"github.com/cloudera/terraform-provider-cdp/resources/opdb"
 	"github.com/cloudera/terraform-provider-cdp/resources/recipe"
+    "github.com/cloudera/terraform-provider-cdp/resources/cloudprivatelinks"
 	testUtil "github.com/cloudera/terraform-provider-cdp/utils/test"
 )
 
@@ -640,6 +641,8 @@ func TestCdpProvider_Resources(t *testing.T) {
 		dwaws.NewDwClusterResource,
 		dwdatabasecatalog.NewDwDatabaseCatalogResource,
 		recipe.NewRecipeResource,
+        cloudprivatelinks.NewPrivateLinkEndpointResource,
+        cloudprivatelinks.NewPrivateLinkServiceAccessResource,
 	}
 
 	provider := CdpProvider{testVersion}
